@@ -1,0 +1,40 @@
+<h1>Destructuring Assignment / Atribuição por Desestruturação</h1>
+<script>
+    //atribuição por array
+    let a = 1;
+    let b = 2;
+    [a, b] = [b, a]
+    console.log('Valor de A', a)
+    console.log('Valor de B', b)
+
+    const valores = [1,2,3,4,5,6]
+    let [um,dois,tres,...resto] = valores
+    console.log(um, dois, tres, resto)
+    
+    // Atribuição de propriedades de objetos (Desestruturação)
+
+    const carro = {
+        marca: 'Chevrolet',
+        nome : 'Onix',
+        tipo: 'LTZ',
+        preco: 39900,
+        opcionais: [
+            'Vidros Eletricos',
+            'Computador de Bordo',
+            'Travas Elétricas'
+        ]
+    }
+
+    let { marca, nome, preco } = carro;
+
+    console.log('marca do veiculo: ' ,marca)
+    console.log('preco: ', preco)
+    console.log('nome do veiculo: ', nome)
+
+    let{ marca: brand, tipo: type} = carro
+    console.log('tipo: ',type)
+
+    let {marca: brnd, tipo: type, opcionais: [op1,op2,op3]} = carro
+    console.log('Tipo de veiculo', type)
+    console.log('Opcionais 1: ',op1)    
+</script>

@@ -1,0 +1,62 @@
+<h1>Lista de Compras</h1>
+Nome do item: <br>
+
+<input type="text" id="$campoItem">
+<button id="$btnAdicionar">
+    Adicionar
+</button>
+<button id="$btnExcluir">
+    Excluir
+</button>
+<p id="$exibicao">
+    Seu carrinho esta vazio no momento
+</p>
+<script>
+    let listaCompras = []
+    $btnAdicionar.onclick = function(){
+        let valor = $campoItem.value.trim()
+        let itemEncontrado = listaCompras.find(i=>i.toUpperCase()===valor.toUpperCase())
+        if(valor == '') 
+            alert('Preencha o campo com o nome')
+        else if(itemEncontrado!==undefined){
+            alert('Valor ja existe')
+        }
+        else{
+            listaCompras.push(valor)
+            exibirLista()
+        }
+        $campoItem.value = ''
+        $campoItem.focus()
+    }
+
+    $btnExcluir.onclick = function(){
+        let valor = $campoItem.value.trim()
+        if(valor == '') 
+            alert('Preencha o campo com o nome')
+        else{
+            let index = listaCompras.findIndex(item=>{
+                return item.localeCompare(valor,undefined,{sensitivity: 'base'}) === 0
+            })
+            if(index >= 0){
+                listaCompras.splice(index,1);
+                exibirLista()
+            }
+            else{
+                alert('Item nao foi encontrado')
+            }
+            $campoItem.value = ''
+            $campoItem.focus()
+        }
+    }
+
+    function exibirLista(){
+        let texto = `Sua lista de supermecado são ${listaCompras.length} itens. 
+        <br>Eles são:<br>
+        ${listaCompras.join(' <br> ')}
+        `
+        if(listaCompras.length === 0) 
+            texto = 'Seu carrinho esta vazio no momento' 
+        $exibicao.innerHTML = texto
+    }
+
+</script>

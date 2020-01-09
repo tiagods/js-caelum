@@ -1,0 +1,62 @@
+<h1>High-order functions</h1>
+<script>
+    const clientes = [
+        {nome:'Paulo Franca',idade: 26, sexo:'M',renda:3500},
+        {nome:'Mariana Oliveira',idade: 31, sexo:'F',renda:4200},
+        {nome:'Daniela Alves',idade: 25, sexo:'F',renda:2000},
+        {nome:'Julio Cesar',idade: 28, sexo:'M',renda:1500},
+        {nome:'Marco Antonio',idade: 22, sexo:'M',renda:3000},
+        {nome:'Juliana Silva',idade: 20, sexo:'F',renda:3000}
+    ]
+    
+    clientes.forEach(item => {
+        document.write(`O cliente ${item.nome} tem ${item.idade} anos <br>`)
+    });
+
+    const idades = clientes.map(cliente => cliente.idade)
+    console.log(idades)
+
+    const scoresClientes = clientes.map(cliente =>{
+        const infoCliente = {
+            nomeDoCliente: cliente.nome
+        }
+        if(cliente.renda<2000){
+            infoCliente.score = 'BAIXO'
+        }
+        else{
+            infoCliente.score = 'ALTO'
+        }
+        return infoCliente;
+    })
+
+    console.log('Scores',scoresClientes)
+
+    const homensComRendaAcima2000 = 
+    clientes.filter(cliente => cliente.sexo==='M' && cliente.renda>2000)
+
+    console.log('Renda acima de 2000', homensComRendaAcima2000)
+
+    const mulherAbaixoDe30 = clientes.find(cliente=> cliente.sexo==='F' && cliente.idade<30)
+
+    console.log('Primeira mulher abaixo de 30 ',mulherAbaixoDe30)
+
+    const posicaoMulherAbaixoDe30 = clientes.findIndex(cliente=> cliente.sexo==='F' && cliente.idade<30)
+    console.log('Posicao ',posicaoMulherAbaixoDe30)
+
+    //comparar por idade
+    clientes.sort((c1,c2)=> c1.idade - c2.idade)
+
+    console.log(clientes)
+
+    //comparar por string
+    clientes.sort((c1,c2)=> c1.nome.localeCompare(c2.nome))
+
+    console.log(clientes)
+
+    //soma das rendas
+    let soma = clientes.reduce((valorAcumulado,cliente)=>{
+        return cliente.renda+valorAcumulado
+    },0)
+
+    console.log(`Soma: ${soma}`)
+</script>

@@ -1,0 +1,33 @@
+<h1>Usando arrays funções</h1>
+<script>
+
+    let animais = ['Cachorro','Papagaio','Maritaca','Gato']
+
+    //remove o ultimo item
+    let animalExcluido = animais.pop();
+    console.log(`Excluido ${animalExcluido}`)
+    console.log(`Lista atualizada ${animais}`)    
+
+    //exclui o primeiro item
+    animalExcluido = animais.shift();
+    console.log(`Excluido ${animalExcluido}`)
+    console.log(`Lista atualizada ${animais}`)
+
+    //adiciona item no inicio da lista
+    quantidade = animais.unshift('Lagarto');
+    console.log(`Quantidade ${quantidade}`)
+    console.log(`Lista atualizada ${animais}`)
+
+    //adiciona item no fim da lista
+    quantidade = animais.push('Cobra');
+    console.log(`Quantidade ${quantidade}`)
+    console.log(`Lista atualizada ${animais}`)
+
+    
+    //splice(posicao,quantidade)
+    //permite remover um item especifico em um array
+    const itemremovido = animais.splice(3,1);
+    console.log(`Lista atualizada ${animais}`)
+
+    console.log(`Imprimir usando separador personalizado: ${animais.join(' | ')}`)
+</script>

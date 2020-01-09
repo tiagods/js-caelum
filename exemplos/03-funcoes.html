@@ -1,0 +1,31 @@
+<h1>Usando funções</h1>
+<script>
+    //function declaration
+    mostrarMensagem()
+    function mostrarMensagem() {
+        console
+        .log('Mostrando mensagem padrao')
+    }
+    //functtion expression
+    var mostrarOutraMensagem = function() {
+        console
+        .log('Mostrando outra mensagem padrao')
+    }
+    mostrarOutraMensagem()
+
+    let mostrarMensagemComNome = nome =>
+        console
+        .log(`Mostrando mensagem com nome: ${nome}`)
+    
+    mostrarMensagemComNome('Tiago')
+
+    //comparativo
+    let somar = function(v1,v2){
+        return v1 + v2
+    }
+    
+    let somar2 = (v1,v2) => v1 + v2
+
+    console.log('5+5',somar(5,5))
+    console.log('10+15', somar2(10,15))
+</script>

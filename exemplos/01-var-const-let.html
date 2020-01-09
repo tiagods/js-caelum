@@ -1,0 +1,55 @@
+<meta charset="utf-8">
+<h1>JavaScript: var, let e const</h1>
+<script>
+
+    var a = 888;
+    if (true) {
+        var b = a;
+    }
+    console.log('O valor de b é: ', b);
+    console.log(window.a === a); // true
+
+    let c = 777;
+    if (true) {
+        let d = c;
+    }
+    // console.log('O valor de d é: ', d); // ReferenceError: d não existe nesse escopo
+    console.log(window.c === c); // false
+
+    {
+        let e = "Gato";
+        console.log('Variável e existe aqui: ', e);
+    }
+    // console.log(e); // ReferenceError: e não existe fora do escopo
+
+    // Constante
+    const x = 0;
+    // x = 10; // TypeError: reatribuição não permitida
+    const listaDeDados = ['12', 'Victor', 78, true, 17.56];
+    console.log('Lista de Dados Original: ', listaDeDados);
+    listaDeDados.push('Papagaio');
+    listaDeDados.shift();
+    listaDeDados.unshift('Cachorro');
+    listaDeDados.splice(2, 1); // Remove o 78 da lista
+    console.log('Lista Modificada: ', listaDeDados);
+    // listaDeDados = []; // TypeError: reatribuição não permitida
+
+
+    // Objetos em JavaScript
+    const pessoa = {
+        nome: 'Henrique',
+        idade: 27,
+        salario: 1500.75,
+        dizerOla: function() {
+            alert('Olá, pessoa!');
+        }
+    }
+
+    console.log('O nome da pessoa é: ', pessoa.nome);
+    pessoa.dizerOla();
+    
+    pessoa.nome = 'Marcos';
+    pessoa.cidade = "Barueri";
+    console.log(pessoa);
+
+</script>
