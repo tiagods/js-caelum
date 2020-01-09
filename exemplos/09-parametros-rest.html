@@ -1,0 +1,43 @@
+<h1>Parametros Rest</h1>
+
+<script>
+    function funcao1() {
+        console.log(arguments)
+    }
+
+    funcao1()
+    funcao1('a','b','c')
+
+    let funcao2 = () =>{
+        console.log(arguments) //arguments NÃO EXISTE EM ARROW FUNCTIONS
+    }
+
+    //funcao2('a','b','c')
+
+    function somarValores() {
+        let acumulador = 0;
+        for (let i = 0; i < arguments.length; i++) {
+            acumulador = arguments[i] + acumulador;
+        }
+        console.log('Total: ',acumulador)
+    }
+    somarValores(1,2,3,4,5)
+
+    for(let numero of '3845648721357'){
+        console.log(numero)
+    }
+
+    function somarValores2(...valores) {
+        let total = valores.reduce((acumulador,valor)=> acumulador+valor,0)
+        console.log('Total: ',total)
+    }
+    somarValores2(1,2,3,4,5)
+
+    function realizarCadastro(nome, email, ...outrasInformacoes) {
+        console.log('Seu nome: ',nome)
+        console.log('E-mail: ',email)
+        console.log('Outras informacoes: ', outrasInformacoes)
+    }
+
+    realizarCadastro('Jhonatan', 'email@gmail',12,'150',true)
+</script>
