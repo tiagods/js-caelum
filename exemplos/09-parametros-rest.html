@@ -1,43 +1,44 @@
-<h1>Parametros Rest</h1>
-
+<meta charset="utf-8">
+<h1>Parâmetros Rest</h1>
 <script>
-    function funcao1() {
-        console.log(arguments)
+
+    function funcao1()
+    {
+        console.log(arguments);
     }
 
-    funcao1()
-    funcao1('a','b','c')
+    funcao1(); // Arguments(0)
+    funcao1('a', 'b', 'c'); // Arguments(3)
 
-    let funcao2 = () =>{
-        console.log(arguments) //arguments NÃO EXISTE EM ARROW FUNCTIONS
+    let funcao2 = () => {
+        console.log(arguments); // arguments NÃO EXISTE EM ARROW FUNCTIONS
     }
+    // funcao2('a', 'b', 'c');
 
-    //funcao2('a','b','c')
-
-    function somarValores() {
-        let acumulador = 0;
+    function somarValores()
+    {
+        var acumulador = 0;
         for (let i = 0; i < arguments.length; i++) {
             acumulador = arguments[i] + acumulador;
         }
-        console.log('Total: ',acumulador)
+        console.log('Total: ', acumulador);
     }
-    somarValores(1,2,3,4,5)
+    somarValores(1,2,3,4,5);
 
-    for(let numero of '3845648721357'){
-        console.log(numero)
+    function somarValores2(...valores)
+    {
+        console.log(valores); // Array
+        let total = valores.reduce((acumulador, valor) => acumulador + valor, 0);
+        console.log('Total: ', total);
     }
-
-    function somarValores2(...valores) {
-        let total = valores.reduce((acumulador,valor)=> acumulador+valor,0)
-        console.log('Total: ',total)
-    }
-    somarValores2(1,2,3,4,5)
+    somarValores2(1, 2, 3, 4, 5);
 
     function realizarCadastro(nome, email, ...outrasInformacoes) {
-        console.log('Seu nome: ',nome)
-        console.log('E-mail: ',email)
-        console.log('Outras informacoes: ', outrasInformacoes)
+        console.log('Seu nome é: ', nome);
+        console.log('Seu e-mail é: ', email);
+        console.log('Outras informações enviadas: ', outrasInformacoes);
     }
 
-    realizarCadastro('Jhonatan', 'email@gmail',12,'150',true)
+    realizarCadastro('Jhonatan', 'e@gmail.com', 12, 150, true);
+
 </script>

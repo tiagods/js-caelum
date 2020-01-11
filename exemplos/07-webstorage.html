@@ -1,25 +1,29 @@
-<h1>Web Storage : sessionStorage e localStorage</h1>
+<meta charset="utf-8">
+<h1>Web Storage: sessionStorage e localStorage</h1>
 <script>
 
-    let session = sessionStorage.getItem('nomeUsuario')
-    let localData = localStorage.getItem('nomeUsuario')
+    let sessionData = sessionStorage.getItem('nomeUsuario');
+    let localData = localStorage.getItem('nomeUsuario');
 
-    if(!sessionData && !localData){
-        let nome = prompt('Informe o seu nome para ser armazenado:')
-        sessionStorage.setItem('nomeUsuario',nome)
-        localStorage.setItem('nomeUsuario',nome)
+    if (!sessionData && !localData) {
+        let nome = prompt("Informe seu nome para ser armazenado:");
+        sessionStorage.setItem('nomeUsuario', nome);
+        localStorage.setItem('nomeUsuario', nome);
     }
 
     document.write(`
-        Dados no localStorage : ${localStorage.getItem('nomeusuario')}<br>
-        Dados no sessionStorage : ${sessionStorage.getItem('nomeusuario')}<br>
-        <button onclick="excluirInfos()"> Excluir informações </button>
-    `)
+        Dado salvo no localStorage: ${ localStorage.getItem('nomeUsuario')} <br>
+        Dado salvo no sessionStorage: ${ sessionStorage.getItem('nomeUsuario')} <br>
+        <button onclick="excluirInfos()">
+            Excluir Informações
+        </button>
+    `);
 
-    function excluirInfos(){
-        sessionStorage.removeItem('nomeUsuario')
-        localStorage.removeItem('nomeUsuario')
-        alert('Dados removidos')
-        window.location.reload()
+    function excluirInfos() {
+        sessionStorage.removeItem('nomeUsuario');
+        localStorage.removeItem('nomeUsuario');
+        alert('Dados removidos com sucesso!');
+        window.location.reload();
     }
+
 </script>

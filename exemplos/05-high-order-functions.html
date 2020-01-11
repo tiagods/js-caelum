@@ -1,0 +1,65 @@
+<meta charset="utf-8">
+<h1>High-Order functions</h1>
+<script>
+
+    const clientes = [
+        { nome: 'Paulo França', idade: 26, sexo: 'M', renda: 3500 },
+        { nome: 'Maria Oliveira', idade: 32, sexo: 'F', renda: 4800 },
+        { nome: 'José Silva', idade: 52, sexo: 'M', renda: 1800 },
+        { nome: 'Carlos Bragança', idade: 28, sexo: 'M', renda: 2800 },
+        { nome: 'Fernanda Vaz', idade: 21, sexo: 'F', renda: 1500 },
+        { nome: 'Josy Mendonça', idade: 30, sexo: 'F', renda: 3200 },
+        { nome: 'Marcos Pereira', idade: 17, sexo: 'M', renda: 1200 }
+    ];
+
+    // forEach() serve para percorrer Arrays
+    clientes.forEach(item => document.write(`O cliente ${item.nome} tem ${item.idade} anos <br>`));
+
+    // map(): transforma um array de um tipo em outro
+    let idadesDosClientes = clientes.map(function(cliente) {
+        return cliente.idade;
+    });
+    idadesDosClientes = clientes.map(cliente => cliente.idade);
+    console.log('Lista contendo só as idades: ', idadesDosClientes);
+
+    const scoresClientes = clientes.map(cliente => {
+        const infoCliente = {
+            nomeDoCliente : cliente.nome
+        }
+
+        if (cliente.renda < 2000) {
+            infoCliente.score = 'BAIXO';
+        }
+        else {
+            infoCliente.score = 'ALTO';
+        }
+
+        return infoCliente;
+    });
+    console.log('Scores: ', scoresClientes);
+
+    // filter(): filtra os itens de um array de acordo com a condição imposta
+    const homensRendaAcima2Mil = clientes.filter(cliente => cliente.sexo === 'M' && cliente.renda > 2000);
+    console.log(homensRendaAcima2Mil);
+
+    // find(): retorna o primeiro item que satisfazer a condição de filtragem
+    const mulherMenos35anos = clientes.find(cliente => cliente.sexo === 'F' && cliente.idade < 35);
+    console.log(mulherMenos35anos);
+
+    // findIndex(): retorna a posição do primeiro item que satisfazer a condição de filtragem
+    const posicaoMulher35anos = clientes.findIndex(cliente => cliente.sexo === 'F' && cliente.idade < 35);
+    console.log(posicaoMulher35anos);
+
+    // sort(): ordena um array de acordo com os critérios especificados
+    clientes.sort((cliente1, cliente2) => cliente1.nome.localeCompare(cliente2.nome));
+    console.log(clientes);
+
+    // reduce() = reduz os valores de um array para um valor único
+    let somaDasRendas = clientes.reduce((valorAcumulado, cliente) => {
+        return cliente.renda + valorAcumulado;
+    }, 0);
+    console.log('Total das Rendas: ', somaDasRendas);
+
+
+
+</script>

@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<h1>JavaScript: var, let e const</h1>
+<h1>JavaScript: var, let, const</h1>
 <script>
 
     var a = 888;
@@ -7,48 +7,46 @@
         var b = a;
     }
     console.log('O valor de b é: ', b);
-    console.log(window.a === a); // true
+    console.log(window.a === a);
 
     let c = 777;
     if (true) {
         let d = c;
     }
-    // console.log('O valor de d é: ', d); // ReferenceError: d não existe nesse escopo
-    console.log(window.c === c); // false
+    // console.log('O valor de d é: ', d); // ReferenceError
+    console.log(window.c === c)//  false
 
     {
-        let e = "Gato";
+        let e = "Jhonatan";
         console.log('Variável e existe aqui: ', e);
     }
-    // console.log(e); // ReferenceError: e não existe fora do escopo
 
-    // Constante
+    // Constantes em JavaScript
     const x = 0;
-    // x = 10; // TypeError: reatribuição não permitida
-    const listaDeDados = ['12', 'Victor', 78, true, 17.56];
-    console.log('Lista de Dados Original: ', listaDeDados);
+    const listaDeDados = ['12', 'Jhonatan', 78, true, 15.75];
+    console.log('Lista Original: ', listaDeDados);
     listaDeDados.push('Papagaio');
     listaDeDados.shift();
     listaDeDados.unshift('Cachorro');
-    listaDeDados.splice(2, 1); // Remove o 78 da lista
-    console.log('Lista Modificada: ', listaDeDados);
-    // listaDeDados = []; // TypeError: reatribuição não permitida
-
+    listaDeDados.splice(2, 1);
+    console.log('Lista modificada: ', listaDeDados);
+    // listaDeDados = [] // TypeError = Reatribuição não permitida!
 
     // Objetos em JavaScript
     const pessoa = {
-        nome: 'Henrique',
+        nome: 'Henrique', // propriedades do objeto
         idade: 27,
         salario: 1500.75,
+        // método do objeto
         dizerOla: function() {
             alert('Olá, pessoa!');
         }
     }
 
-    console.log('O nome da pessoa é: ', pessoa.nome);
+    console.log('Nome da Pessoa: ', pessoa.nome);
     pessoa.dizerOla();
-    
-    pessoa.nome = 'Marcos';
+
+    pessoa.nome = "Marcos";
     pessoa.cidade = "Barueri";
     console.log(pessoa);
 

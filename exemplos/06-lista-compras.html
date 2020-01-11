@@ -1,6 +1,6 @@
+<meta charset="utf-8">
 <h1>Lista de Compras</h1>
-Nome do item: <br>
-
+Nome do Item: <br>
 <input type="text" id="$campoItem">
 <button id="$btnAdicionar">
     Adicionar
@@ -9,54 +9,61 @@ Nome do item: <br>
     Excluir
 </button>
 <p id="$exibicao">
-    Seu carrinho esta vazio no momento
+    Sua lista está vazia no momento! 
 </p>
 <script>
-    let listaCompras = []
-    $btnAdicionar.onclick = function(){
-        let valor = $campoItem.value.trim()
-        let itemEncontrado = listaCompras.find(i=>i.toUpperCase()===valor.toUpperCase())
-        if(valor == '') 
-            alert('Preencha o campo com o nome')
-        else if(itemEncontrado!==undefined){
-            alert('Valor ja existe')
+
+    let listaCompras = [];
+
+    $btnAdicionar.onclick = function() {
+        let item = $campoItem.value.trim();
+        let itemEncontrado = listaCompras.find(itemLista => {
+            return itemLista.localeCompare(item, undefined, { sensitivity: 'base' }) === 0;
+        });
+
+        if (item == '') {
+            alert('Por favor, preencha o nome do Item!')
         }
-        else{
-            listaCompras.push(valor)
-            exibirLista()
+        else if (itemEncontrado !== undefined) {
+            alert('Item já existe na lista!');
         }
-        $campoItem.value = ''
-        $campoItem.focus()
+        else {
+            listaCompras.push(item);
+            exibirLista();
+        }
+        $campoItem.value = '';
+        $campoItem.focus();
     }
 
-    $btnExcluir.onclick = function(){
-        let valor = $campoItem.value.trim()
-        if(valor == '') 
-            alert('Preencha o campo com o nome')
-        else{
-            let index = listaCompras.findIndex(item=>{
-                return item.localeCompare(valor,undefined,{sensitivity: 'base'}) === 0
-            })
-            if(index >= 0){
-                listaCompras.splice(index,1);
-                exibirLista()
-            }
-            else{
-                alert('Item nao foi encontrado')
-            }
-            $campoItem.value = ''
-            $campoItem.focus()
-        }
+    function exibirLista()
+    {
+        $exibicao.innerHTML = `
+            Sua lista de supermercado tem ${listaCompras.length} itens. Eles são:<br>
+            ${listaCompras.join('<br>')}
+        `;
     }
 
-    function exibirLista(){
-        let texto = `Sua lista de supermecado são ${listaCompras.length} itens. 
-        <br>Eles são:<br>
-        ${listaCompras.join(' <br> ')}
-        `
-        if(listaCompras.length === 0) 
-            texto = 'Seu carrinho esta vazio no momento' 
-        $exibicao.innerHTML = texto
+    $btnExcluir.onclick = function() {
+        let itemExcluir = $campoItem.value.trim();
+
+        if (itemExcluir == '') {
+            alert('Por favor, informe o item a ser excluído da lista!');
+        }
+        else {
+            let posicao = listaCompras.findIndex(itemLista => {
+                return itemLista.localeCompare(itemExcluir, undefined, { sensitivity: 'base' }) === 0;
+            });
+
+            if (posicao >= 0) {
+                listaCompras.splice(posicao, 1);
+                exibirLista();
+                $campoItem.value = '';
+                $campoItem.focus();
+            }
+            else {
+                alert('Item não encontrado na lista de compras!');
+            }
+        }
     }
 
 </script>

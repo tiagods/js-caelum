@@ -1,20 +1,18 @@
-if(aceitouSalvar === true){
-    let paginaInicial = localStorage.getItem('paginaInicial')
+import {aceitouSalvar} from './storage/aceitouSalvar.js';
+import {formatarEndereco} from './endereco/formataEndereco.js'
+import { setPaginaInicial } from './storage/paginaInicial.js';
+import { paginaAtual } from './storage/sessaoAtual.js';
 
-    let pagina
+let enderecoInicial = paginaAtual
 
-    if(!paginaInicial){
-        pagina = prompt('Escolha uma pagina inicial')
-        if(pagina){
-            if(pagina.substring(0,7) !== 'http://' 
-            && pagina.substring(0,8) !== 'https://'){
-                pagina = 'http://'+pagina
-            }     
-            localStorage.setItem('paginaInicial', pagina)
-        }
+if (aceitouSalvar === true) {
+    if (enderecoInicial === null) {
+        enderecoInicial = prompt('Escolha a página inicial:')
     }
-    else 
-        pagina = paginaInicial
-    iframe.src = pagina
-    inputEndereco.value = pagina
+
+    if (enderecoInicial) {
+        enderecoInicial = formatarEndereco(enderecoInicial)
+        setPaginaInicial(enderecoInicial)
+    }
 }
+
