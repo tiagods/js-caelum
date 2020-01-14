@@ -1,0 +1,16 @@
+<h1>Funções contrutoras</h1>
+<script>
+
+    //es5
+    function Carro(marca ='', modelo='', chassi='') {
+        this.marca=marca;
+        this.modelo=modelo;
+        this.chassi=chassi;
+    }
+    //tudo que criar no prototype é compartilhado com todos os objetos que
+    //foram criados a partir da classe ou função construtora
+    Carro.prototype.andar = function () {
+        console.log('Andando...')
+    }
+
+</script>
