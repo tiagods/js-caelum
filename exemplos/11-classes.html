@@ -1,0 +1,29 @@
+<h1>Classes do ES6</h1>
+<script>
+
+    //es6
+    class Carro{
+        constructor(marca, modelo, chassi){
+            this.marca = marca;
+            this.modelo = modelo;
+            this.chassi = chassi;
+        }
+
+        //metodo associado ao objeto
+        mostrarDadosCarro = () =>{
+            console.log('Dados do carro ', this.marca, this.modelo, this.chassi);
+        }
+
+        //metodo associado ao prototype
+        movimento(){
+            console.log('Andar')
+        }
+        //sobrescrever metodo
+
+        toString(){
+            return 'Isso é um carro'
+        }
+    }
+
+
+</script>
