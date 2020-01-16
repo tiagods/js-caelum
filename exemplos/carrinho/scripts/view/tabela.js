@@ -1,6 +1,17 @@
 import * as CarrinhoController from '../controller/CarrinhoController.js';
 import {formataMoeda} from '../utils/formataMoeda.js';
 
+
+$produtosTabela.addEventListener('click', event =>{
+    let indice = event.target.dataset.indice;
+    if(indice!==undefined){
+        CarrinhoController.excluirProduto(indice);
+        listarProdutos();
+    }
+})
+
+listarProdutos();
+
 export function listarProdutos() {
 
     const listarProdutos = CarrinhoController.getProdutos();
@@ -16,7 +27,7 @@ export function listarProdutos() {
             <td>${produto.quantidade}</td>
             <td>${formataMoeda(produto.quantidade * produto.precoUnitario)}</td>
             <td>
-                <button class="btn btn-danger">
+                <button data-indice="${indice}" class="btn btn-danger">
                 x
                 </button>
             </td>

@@ -15,17 +15,19 @@ $produto.addEventListener('change', () => {
 
 $btnForm.addEventListener('click', () => {
     let nomeProduto = $produto.value.trim();
-    let valor = parseFloat($valorUnitario.value.trim().replace(/(R\$ ?|\.)/,'').replace(',',''));
+    let valor = parseFloat($valorUnitario.value.trim().replace(/(R\$ ?|\.)/,'').replace(',','.'));
     let quantidade = parseInt($quantidade.value);
 
-    console.log('nome', nomeProduto);
-    console.log('valor', valor);
-    console.log('quantidade', quantidade);
-
-    CarrinhoController.adicionarProduto(nomeProduto,quantidade,valor);
-    Tabela.listarProdutos();
-
-    $produto.value ='';
-    $quantidade.value=1;
-    $valorUnitario.value = "R$ 0,00";
+    try {
+        CarrinhoController.adicionarProduto(nomeProduto,quantidade,valor);
+        Tabela.listarProdutos();
+        $produto.value ='';
+        $quantidade.value=1;
+        $valorUnitario.value = "R$ 0,00";   
+        $msgErro.classList.add('d-none'); 
+    } catch (error) {
+        $msgErro.textContent = error.message;
+        $msgErro.classList.remove('d-none');
+    }
+    
 })
