@@ -16,7 +16,7 @@ export async function carregarUrl(enderecoRecebido) {
         Tipo: ${typeof enderecoRecebido}
         `)
     }
-
+    carregaNoIframe(endereco);
     /*
     fetch(endereco.urlCompleta).then(()=>{
         iframe.src = endereco.urlCompleta;
@@ -25,7 +25,9 @@ export async function carregarUrl(enderecoRecebido) {
         alert('Erro no carregamento')
     })
     */
+}
 
+async function carregaNoIframe(endereco) {
     try{
         await fetch(endereco.urlCompleta);
         iframe.src = endereco.urlCompleta;

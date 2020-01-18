@@ -17,7 +17,7 @@ inputEndereco.addEventListener('keypress', event =>{
             let url = formatarEndereco(inputEndereco.value)
             endereco = new Endereco(url)
             carregarUrl(endereco)
-        }catch(error){
+        }catch(ç){
             if(error instanceof CakeEnderecoInvalidoError){
                 alert(error.message);
             }
