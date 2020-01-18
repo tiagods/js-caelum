@@ -25,8 +25,10 @@ export function listarContatosTabela() {
 tabelaContatos.addEventListener('click', event =>{
     try {
         const indice = event.target.dataset.indice;
-        ContatoController.excluirContato(indice);
-        listarContatosTabela();
+        if(indice !== undefined){
+            ContatoController.excluirContato(indice);
+            listarContatosTabela();
+        }
     } catch (error) {
         if(error instanceof ContatoError){
             alert(error);
